@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Via Flight Travel Planner (Advanced)</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div id="app">
+      <aside class="sidebar">
+        <h1 class="app-title">Via Flight Travel Planner</h1>
+        <section>
+          <h2>1. 여행 기본 설정</h2>
+          <label class="block">출발지(공항/도시)
+            <input id="origin-input" class="input" placeholder="예: Changi Airport" />
+          </label>
+          <div class="row gap">
+            <button id="use-gps" class="btn">현재 위치 사용</button>
+            <button id="clear-origin" class="btn btn-ghost">지우기</button>
+          </div>
+          <div class="divider"></div>
+          <div class="row gap wrap">
+            <label class="chip"><input type="radio" name="time-mode" value="now" checked /> 현재 시간</label>
+            <label class="chip"><input type="radio" name="time-mode" value="layover" /> 환승 도착 시간</label>
+          </div>
+          <div id="layover-fields" class="hidden">
+            <label class="block">환승 도착 일시
+              <input id="arrival-dt" class="input" placeholder="도착 일시 선택" />
+            </label>
+          </div>
+          <label class="block">환승 시간(분) 30–1440
+            <input id="layover-min" type="number" min="30" max="1440" step="15" value="360" class="input" />
+          </label>
+          <label class="block">시간대
+            <select id="tz-select" class="input">
+              <option value="auto">자동(브라우저)</option>
+              <option>Asia/Seoul</option>
+              <option>Asia/Singapore</option>
+              <option>Asia/Tokyo</option>
+              <option>Europe/London</option>
+              <option>America/Los_Angeles</option>
+              <option>America/New_York</option>
+            </select>
+          </label>
+        </section>
+
+        <section>
+          <h2>2. 목적지 발견 & 관리</h2>
+          <div class="grid-2 gap">
+            <label class="chip"><input type="checkbox" class="cat" value="tourist_attraction" checked /> 관광명소</label>
+            <label class="chip"><input type="checkbox" class="cat" value="restaurant" /> 식당</label>
+            <label class="chip"><input type="checkbox" class="cat" value="cafe" /> 카페</label>
+            <label class="chip"><input type="checkbox" class="cat" value="lodging" /> 숙박</label>
+            <label class="chip"><input type="checkbox" class="cat" value="shopping_mall" /> 쇼핑몰</label>
+            <label class="chip"><input type="checkbox" class="cat" value="airport" /> 공항</label>
+            <label class="chip"><input type="checkbox" class="cat" value="park" /> 공원</label>
+            <label class="chip"><input type="checkbox" class="cat" value="museum" /> 박물관</label>
+          </div>
+          <div class="row gap">
+            <input id="search-input" class="input" placeholder="장소 검색 (예: Merlion Park)" />
+            <button id="search-clear" class="btn btn-ghost">지우기</button>
+            <button id="search-btn" class="btn">검색</button>
+          </div>
+          <div id="results" class="cards"></div>
+          <div class="row gap center">
+            <button id="prev-page" class="btn" disabled>이전</button>
+            <span id="page-info" class="muted">0 / 0</span>
+            <button id="next-page" class="btn" disabled>다음</button>
+          </div>
+        </section>
+
+        <section>
+          <h2>일정 관리</h2>
+          <div id="itinerary" class="itinerary"></div>
+        </section>
+
+        <section>
+          <h2>3. AI 기반 최적화</h2>
+          <div class="row gap">
+            <button id="optimize" class="btn btn-primary">최적 일정 생성하기</button>
+            <button id="view-all" class="btn">전체 일정 보기</button>
+          </div>
+          <div id="schedule" class="cards"></div>
+        </section>
+      </aside>
+
+      <main class="map-area">
+        <div id="map"></div>
+        <div id="poi-strip" class="poi-strip hidden">
+          <button id="poi-prev" class="btn sm">◀</button>
+          <div id="poi-cards" class="poi-cards"></div>
+          <button id="poi-next" class="btn sm">▶</button>
+        </div>
+        <div class="top-controls">
+          <div id="start-row" class="row gap">
+            <button id="start-trip" class="big-fab">여행 시작</button>
+            <button id="recenter" class="big-fab">내 위치</button>
+          </div>
+          <div id="trip-actions" class="row gap hidden">
+            <button id="pause-trip" class="btn">일시정지</button>
+            <button id="resume-trip" class="btn hidden">재개</button>
+            <button id="end-trip" class="btn">여행종료</button>
+          </div>
+        </div>
+        <div id="status-indicator" class="status-card hidden">
+          <div class="row gap">
+            <span id="status-icon" class="badge ok">정상</span>
+            <span id="next-dest" class="strong"></span>
+          </div>
+          <div class="muted" id="eta-remaining"></div>
+        </div>
+      </main>
+    </div>
+
+    <div id="modal" class="modal hidden">
+      <div class="modal-content">
+        <button id="modal-close" class="btn btn-ghost right">닫기</button>
+        <div id="modal-body"></div>
+      </div>
+    </div>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.2/Sortable.min.js"></script>
+    <script src="config.js"></script>
+    <script src="app.js"></script>
+  </body>
+  </html>
