@@ -1,5 +1,3 @@
-@import url('https://bokchii.github.io/via_flight_advanced2/styles.css');
-
 /* 고급 기능의 경고 강조 */
 .warn-card{border:1px solid var(--warn); background:rgba(245, 158, 11, .12)}
 
