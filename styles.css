@@ -1,3 +1,56 @@
+:root{
+  --bg:#0f1115; --panel:#171a21; --line:#232833; --muted:#9aa4b2;
+  --text:#e7ecf3; --accent:#4f8cff; --accent-2:#22c55e; --warn:#f59e0b; --danger:#ef4444;
+}
+*{box-sizing:border-box}
+html,body,#app{height:100%}
+body{margin:0;background:var(--bg);color:var(--text);font:14px/1.4 system-ui,Segoe UI,Apple SD Gothic Neo,sans-serif}
+.app-title{margin:0 0 12px 0;font-size:18px}
+.sidebar{width:380px;overflow:auto;border-right:1px solid var(--line);padding:16px;background:var(--panel)}
+.map-area{flex:1;position:relative}
+#app{display:flex}
+#map{position:absolute;inset:0}
+.poi-strip{position:absolute;left:0;right:0;bottom:0;display:flex;align-items:center;gap:8px;padding:8px;border-top:1px solid var(--line);background:linear-gradient(180deg, rgba(15,17,21,0) 0%, #0f1115 30%)}
+.poi-cards{display:flex;gap:8px;overflow-x:auto;padding:4px}
+.poi-card{min-width:260px;max-width:260px;border:1px solid var(--line);background:#101522;border-radius:10px;padding:8px}
+.poi-card img{width:100%;height:120px;object-fit:cover;border-radius:8px}
+.row{display:flex;align-items:center}
+.grid-2{display:grid;grid-template-columns:1fr 1fr}
+.wrap{flex-wrap:wrap}
+.gap{gap:8px}
+.center{justify-content:center}
+.block{display:block;margin:8px 0}
+.input{width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:#0d0f14;color:var(--text)}
+.btn{padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:#141821;color:var(--text);cursor:pointer}
+.btn:hover{border-color:#3a4252}
+.btn-ghost{background:transparent}
+.btn-primary{background:var(--accent);border-color:transparent;color:white}
+.sm{padding:4px 8px;font-size:12px}
+.fab{position:absolute;right:12px;bottom:12px;border-radius:999px;background:var(--accent);color:#fff;border:none;padding:12px 16px;box-shadow:0 6px 18px rgba(0,0,0,.3)}
+.divider{height:1px;background:var(--line);margin:12px 0}
+.chip{display:inline-flex;gap:6px;align-items:center;background:#121621;border:1px solid var(--line);padding:6px 8px;border-radius:999px}
+.cards{display:grid;gap:8px;margin-top:8px}
+.card{border:1px solid var(--line);background:#12161f;border-radius:10px;padding:10px}
+.card .title{font-weight:600}
+.muted{color:var(--muted)}
+.strong{font-weight:600}
+.itinerary .item{display:flex;gap:8px;align-items:center;justify-content:space-between;border:1px dashed var(--line);padding:8px;border-radius:8px}
+.tag{display:inline-flex;align-items:center;padding:2px 6px;border-radius:6px;border:1px solid var(--line);font-size:12px}
+.badge{padding:2px 6px;border-radius:6px;font-size:12px}
+.ok{background:#1b3a26;color:#a7f3d0}
+.warn{background:#3a2f1b;color:#fde68a}
+.danger{background:#3a1b1b;color:#fecaca}
+.status-card{position:absolute;top:12px;right:12px;background:#0f141f;border:1px solid var(--line);border-radius:10px;padding:10px;min-width:220px;box-shadow:0 6px 18px rgba(0,0,0,.3)}
+.hidden{display:none}
+.floating-controls{position:absolute;left:12px;bottom:12px;display:flex;flex-direction:column;gap:8px}
+.right{float:right}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.6);display:flex;align-items:center;justify-content:center}
+.modal.hidden{display:none !important}
+.modal-content{background:#0e121a;border:1px solid var(--line);border-radius:12px;max-width:640px;width:90%;padding:16px;max-height:80vh;overflow:auto}
+
+/* category colors for markers/cards legends could follow here if needed */
+
+
 /* 고급 기능의 경고 강조 */
 .warn-card{border:1px solid var(--warn); background:rgba(245, 158, 11, .12)}
 
